@@ -1,0 +1,4 @@
+--patch-module
+shop.processing=_
+--add-reads
+shop.processing=ALL-UNNAMED

@@ -1,0 +1,10 @@
+ua\shop\orders\model\Product.class
+ua\shop\orders\processing\OrderProcessor.class
+module-info.class
+ua\shop\orders\model\Order.class
+ua\shop\orders\model\Clothing.class
+ua\shop\orders\processing\OrderProcessingException.class
+ua\shop\orders\model\Electronics$ElectronicsBuilder.class
+ua\shop\orders\processing\internal\OrderValidator.class
+ua\shop\orders\model\Electronics.class
+ua\shop\orders\model\Clothing$ClothingBuilder.class

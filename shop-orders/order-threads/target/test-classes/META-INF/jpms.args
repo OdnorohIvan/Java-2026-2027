@@ -1,0 +1,4 @@
+--patch-module
+shop.threads=_
+--add-reads
+shop.threads=ALL-UNNAMED

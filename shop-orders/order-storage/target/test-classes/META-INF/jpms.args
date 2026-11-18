@@ -1,0 +1,4 @@
+--patch-module
+shop.storage=_
+--add-reads
+shop.storage=ALL-UNNAMED
