@@ -1,38 +1,36 @@
 package ua.study.automaton;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WordAutomatonTest {
-    @ParameterizedTest
-    @ValueSource(strings = {"", "test", "TS", "TEE", "TESS"})
-    void endsInStateS(String text) {
-        assertEquals('S', WordAutomaton.run(text));
+    static Object[][] testCases() {
+        return new Object[][] {
+            {"", 'S'},
+            {"test", 'S'},
+            {"TS", 'S'},
+            {"TEE", 'S'},
+            {"TESS", 'S'},
+            {"T", '1'},
+            {"TT", '1'},
+            {"TET", '1'},
+            {"TE ST", '1'},
+            {"TE", '2'},
+            {"abcTES", '3'},
+            {"TEST", 'F'},
+            {"abcTESTabc", 'F'},
+            {"TES#TEST", 'F'},
+            {"TESTEST", 'F'},
+            {"TTEST", 'F'},
+            {"TETEST", 'F'}
+        };
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"T", "TT", "TET", "TE ST"})
-    void endsInState1(String text) {
-        assertEquals('1', WordAutomaton.run(text));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"TE"})
-    void endsInState2(String text) {
-        assertEquals('2', WordAutomaton.run(text));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"abcTES"})
-    void endsInState3(String text) {
-        assertEquals('3', WordAutomaton.run(text));
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"TEST", "abcTESTabc", "TES#TEST", "TESTEST", "TTEST", "TETEST"})
-    void endsInStateF(String text) {
-        assertEquals('F', WordAutomaton.run(text));
+    @MethodSource("testCases")
+    void returnsFinalState(String text, char expectedState) {
+        assertEquals(expectedState, WordAutomaton.run(text));
     }
 }
